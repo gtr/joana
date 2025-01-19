@@ -130,7 +130,7 @@ const Gallery = ({ images, currentIndex }) => {
 
   return (
     <div 
-      style={{ width: '100%', height: '80vh' }}
+      style={{ width: '100%', height: '70vh' }}
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
       onPointerMove={handlePointerMove}
