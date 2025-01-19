@@ -1,47 +1,55 @@
 // export default App
 import React, { useState, useEffect } from 'react'
 import { MoonPhases } from './MoonPhases';
+import image01 from './img/image_01.png';
+import image02 from './img/image_02.png';
+import image03 from './img/image_03.png';
+import image04 from './img/image_04.png';
+import image05 from './img/image_05.png';
+import image06 from './img/image_06.png';
+import image07 from './img/image_07.png';
+import image08 from './img/image_08.png';
 
 function App() {
   // Array of all images
   const images = [
     {
-      src: "/src/img/image_01.png",
+      src: image01,
       title: "Comme des Garçons",
       details: "SIX Magazine Pages 9-10 (1990)"
     },
     {
-      src: "/src/img/image_02.png",
+      src: image02,
       title: "Comme des Garçons",
       details: "SIX Magazine Pages 21-22 (1990)"
     },
     {
-      src: "/src/img/image_03.png",
+      src: image03,
       title: "Comme des Garçons",
       details: "SIX Magazine Pages 25-26 (1990)"
     },
     {
-      src: "/src/img/image_04.png",
+      src:image04,
       title: "Comme des Garçons",
       details: "SIX Magazine Pages 33-34 (1990)"
     },
     {
-      src: "/src/img/image_05.png",
+      src: image05,
       title: "Comme des Garçons",
       details: "SIX Magazine Pages 37-38 (1990)"
     },
     {
-      src: "/src/img/image_06.png",
+      src:image06,
       title: "Comme des Garçons",
       details: "SIX Magazine Pages 63-64 (1990)"
     },
     {
-      src: "/src/img/image_07.png",
+      src: image07,
       title: "Comme des Garçons",
       details: "SIX Magazine Pages 67-68 (1990)"
     },
     {
-      src: "/src/img/image_08.png",
+      src:image08,
       title: "Comme des Garçons",
       details: "SIX Magazine Pages 71-72 (1990)"
     },

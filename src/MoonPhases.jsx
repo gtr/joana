@@ -1,6 +1,7 @@
 import React from 'react';
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { TextureLoader } from 'three';
+import image01 from './img/moon_texture.jpg';
 import { useRef, useState } from "react";
 
 const createStars = () => {
@@ -31,7 +32,7 @@ const Stars = () => (
 
 const Moon = () => {
   const moonRef = useRef();
-  const moonTexture = useLoader(TextureLoader, '/src/img/moon_texture.jpg');
+  const moonTexture = useLoader(TextureLoader, image01);
   const { size } = useThree();
   const [isDragging, setIsDragging] = useState(false);
   const [rotationY, setRotationY] = useState(0);
