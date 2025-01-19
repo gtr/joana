@@ -116,24 +116,54 @@ const Gallery = ({ images, currentIndex }) => {
     const newRotationY = rotationY + movementX;
     const newRotationX = rotationX + movementY;
     
-    // More limited rotation range
-    if (newRotationX >= -Math.PI/12 && newRotationX <= Math.PI/12) {
+    if (newRotationX >= -Math.PI/6 && newRotationX <= Math.PI/6) {
       setRotationX(newRotationX);
     }
     
-    if (newRotationY >= -Math.PI/12 && newRotationY <= Math.PI/12) {
+    if (newRotationY >= -Math.PI/6 && newRotationY <= Math.PI/6) {
       setRotationY(newRotationY);
     }
     
     setInitialMousePosition({ x: e.clientX, y: e.clientY });
   };
 
+  const handleTouchStart = (e) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    handlePointerDown({ 
+      preventDefault: () => {},
+      clientX: touch.clientX,
+      clientY: touch.clientY 
+    });
+  };
+
+  const handleTouchMove = (e) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    handlePointerMove({
+      clientX: touch.clientX,
+      clientY: touch.clientY
+    });
+  };
+
+  const handleTouchEnd = (e) => {
+    e.preventDefault();
+    handlePointerUp();
+  };
+
   return (
     <div 
-      style={{ width: '100%', height: '70vh' }}
+      style={{ 
+        width: '100%', 
+        height: '80vh',
+        touchAction: 'none'
+      }}
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
       onPointerMove={handlePointerMove}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       <Canvas 
         camera={{ position: [0, 0, 6], fov: 50 }}
@@ -141,10 +171,10 @@ const Gallery = ({ images, currentIndex }) => {
       >
         <Suspense fallback={null}>
           <TexturePreloader images={images} />
-          <ambientLight intensity={0.9} />
+          <ambientLight intensity={0.7} />
           <spotLight 
             position={[10, 10, 10]} 
-            angle={0.9} 
+            angle={0.5} 
             penumbra={1} 
             intensity={1} 
             castShadow 

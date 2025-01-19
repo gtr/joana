@@ -80,12 +80,44 @@ export function MoonPhases() {
     setInitialMousePosition({ x: e.clientX, y: e.clientY });
   };
 
+  const handleTouchStart = (e) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    handlePointerDown({ 
+      stopPropagation: () => {},
+      clientX: touch.clientX, 
+      clientY: touch.clientY 
+    });
+  };
+
+  const handleTouchMove = (e) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    handlePointerMove({
+      clientX: touch.clientX,
+      clientY: touch.clientY
+    });
+  };
+
+  const handleTouchEnd = (e) => {
+    e.preventDefault();
+    handlePointerUp();
+  };
+
   return (
     <div
-      style={{ height: "300px", marginBottom: "2rem", background: "#000" }} 
+      style={{ 
+        height: "300px", 
+        marginBottom: "2rem", 
+        background: "#000",
+        touchAction: 'none' // Disable browser touch handling
+      }} 
       onPointerDown={handlePointerDown} 
       onPointerUp={handlePointerUp} 
       onPointerMove={handlePointerMove}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       <Canvas camera={{ position: [0, 0, 5] }}>
         <Stars />
