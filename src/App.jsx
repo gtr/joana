@@ -1,6 +1,4 @@
-// export default App
 import React, { useState, useEffect } from 'react'
-import { MoonPhases } from './MoonPhases';
 import image01 from './img/image_01.png';
 import image02 from './img/image_02.png';
 import image03 from './img/image_03.png';
@@ -9,9 +7,10 @@ import image05 from './img/image_05.png';
 import image06 from './img/image_06.png';
 import image07 from './img/image_07.png';
 import image08 from './img/image_08.png';
+import About from './about';
+import Gallery from './Gallery';
 
 function App() {
-  // Array of all images
   const images = [
     {
       src: image01,
@@ -65,7 +64,7 @@ function App() {
     }
     const newTimer = setInterval(() => {
       setCurrentIndex(prev => (prev + 1) % images.length);
-    }, 10000);
+    }, 130000);
     setTimerId(newTimer);
   };
 
@@ -78,7 +77,6 @@ function App() {
     };
   }, []);
 
-
   const nextImage = () => {
     setCurrentIndex(prev => (prev + 1) % images.length);
     startTimer();
@@ -89,44 +87,28 @@ function App() {
     startTimer();
   };
 
-  const AboutContent = () => (
-    <div className="about-content">
-      <MoonPhases />
-      <p>
-        Hello, I'm Joana Muñoz. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Quisque sagittis leo eget eros condimentum imperdiet. Aliquam dignissim eget sem
-        interdum suscipit. Sed et turpis nunc. Donec malesuada fermentum est in
-        ullamcorper. Fusce vel rhoncus dui. Praesent lobortis mattis dapibus. Aliquam
-        eget massa orci. Curabitur fringilla tempor volutpat. Pellentesque dapibus nibh
-        vitae felis hendrerit, ac malesuada lorem sodales. Vestibulum ultricies nibh
-        erat, in fermentum nibh sodales nec.Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit. Quisque sagittis leo eget eros condimentum imperdiet. Aliquam
-        dignissim eget sem interdum suscipit. Sed et turpis nunc.
-      </p>
-    </div>
-  );
   return (
     <div className="container">
       <header>
         <div className="name">Joana Muñoz</div>
         <div className="nav">
           <button onClick={() => setShowAbout(!showAbout)}>
-            {showAbout ? "Work" : "About"}
+            {showAbout ? "Home" : "About"}
           </button>
         </div>
       </header>
       
       <main>
         {showAbout ? (
-          <AboutContent />
+          <About />
         ) : (
           <>
             <div className="carousel">
-              <button onClick={prevImage} className="nav-button prev">←</button>
-              <img 
-                src={images[currentIndex].src} 
-                alt={images[currentIndex].title} 
+              <Gallery 
+                images={images}
+                currentIndex={currentIndex}
               />
+              <button onClick={prevImage} className="nav-button prev">←</button>
               <button onClick={nextImage} className="nav-button next">→</button>
             </div>
             <div className="caption">
